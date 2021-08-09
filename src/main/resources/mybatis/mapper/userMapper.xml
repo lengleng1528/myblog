@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.hogwarts.blog.mapper.UserMapper">
+<mapper namespace="me.ele.download.mapper.UserMapper">
 
-    <select id="findByUsernameAndPassword" resultType="com.hogwarts.blog.pojo.User">
+    <select id="findByUsernameAndPassword" resultType="me.ele.download.pojo.User">
         SELECT * FROM t_user WHERE username=#{username} AND password=#{password}
     </select>
 

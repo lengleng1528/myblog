@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.hogwarts.blog.mapper.OrderMapper">
+<mapper namespace="me.ele.download.mapper.OrderMapper">
 
-    <resultMap id="order" type="com.hogwarts.blog.pojo.Order">
+    <resultMap id="order" type="me.ele.download.pojo.Order">
         <id property="id" column="id"/>
         <result property="orderId" column="order_id"/>
         <result property="orderAddTime" column="order_add_time"/>
@@ -17,7 +17,7 @@
     </resultMap>
 
 
-    <select id="findOrderByVo" resultMap="order" parameterType="com.hogwarts.blog.vo.OrderSearch" >
+    <select id="findOrderByVo" resultMap="order" parameterType="me.ele.download.vo.OrderSearch" >
         SELECT order_id, order_add_time, order_status, complaint_status FROM tb_order
         <where>
             <if test="orderStatus != null">
