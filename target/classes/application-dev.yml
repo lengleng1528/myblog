@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/blog?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://localhost:3306/download?useUnicode=true&characterEncoding=utf-8
     username: root
-    password:
+    password: jiayi071528
 
 logging:
   level:

@@ -30,11 +30,10 @@ public class OrderController {
     //分页查询全部订单
     @GetMapping("/")
     public String list(@RequestParam(defaultValue = "1",value = "pageNum") Integer pageNum,Model model){
-        //按照排序字段 倒序 排序
-        //String orderBy = "update_time  desc";
-        PageHelper.startPage(pageNum,5);
+        PageHelper.startPage(pageNum,3);
         List<Order> list = orderService.getAllOrders();
         PageInfo<Order> pageInfo = new PageInfo<Order>(list);
+        //System.out.println(pageInfo.isHasNextPage());
         model.addAttribute("pageInfo",pageInfo);
         return "admin/orders";
     }
@@ -43,11 +42,10 @@ public class OrderController {
     //订单条件查询
     @PostMapping("/order/search")
     public String search(@RequestParam(defaultValue = "1",value = "pageNum") Integer pageNum, OrderSearch orderSearch, Model model){
-        //按照排序字段 倒序 排序
-        //String orderBy = "update_time desc";
-        PageHelper.startPage(pageNum,5);
+        PageHelper.startPage(pageNum,3);
         List<Order> list = orderService.listOrderByVo(orderSearch);
         PageInfo<Order> pageInfo = new PageInfo<Order>(list);
+        //System.out.println(pageInfo.getPageNum());
         model.addAttribute("pageInfo",pageInfo);
         //只更新表格中的数据
         return "admin/orders::orderlist";
@@ -65,4 +63,5 @@ public class OrderController {
         taskService.saveTask(task);
         return "redirect:/task";
     }
+
 }

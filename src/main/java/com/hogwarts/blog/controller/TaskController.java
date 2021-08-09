@@ -25,7 +25,7 @@ public class TaskController {
     public String list(@RequestParam(defaultValue = "1", value = "pageNum") Integer pageNum, Model model) {
         //按照排序字段 倒序 排序
         //String orderBy = "update_time desc";
-        PageHelper.startPage(pageNum, 5);
+        PageHelper.startPage(pageNum, 3);
         List<Task> list = taskService.listAllTask();
         PageInfo<Task> pageInfo = new PageInfo<Task>(list);
         model.addAttribute("pageInfo", pageInfo);
@@ -36,15 +36,18 @@ public class TaskController {
     //任务条件查询
     @PostMapping("/task/search")
     public String search(@RequestParam(defaultValue = "1",value = "pageNum") Integer pageNum, TaskSearch taskSearch, Model model){
-        //按照排序字段 倒序 排序
-        String orderBy = "update_time desc";
-        PageHelper.startPage(pageNum,5,orderBy);
+        PageHelper.startPage(pageNum,3);
         List<Task> list = taskService.listTaskByVo(taskSearch);
         PageInfo<Task> pageInfo = new PageInfo<Task>(list);
         model.addAttribute("pageInfo",pageInfo);
         //只更新表格中的数据
-        return "admin/tasks::orderlist";
+        return "admin/tasks::tasklist";
     }
 
     //下载接口
+    @PostMapping("/task/download")
+    public String download(){
+
+        return "";
+    }
 }
